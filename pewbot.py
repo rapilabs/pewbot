@@ -61,15 +61,15 @@ class Pewbot(object):
 
     def _handle_message(self, message, room):
         body = message['body']
-        if body == 'pewbot help me':
+        if body == 'pewbot help me' and not self.first_run:
             self.help(room)
             return
 
         if not self.first_run and body and message['user_id'] not in self.ignore_users:
             for c in self.commands:
                 try:
-                    if len(m) > 0:
-                        for m in c.handle(body):
+                    for m in c.handle(body):
+                        if m:
                             room.speak(m)
                 except Exception as e:
                     print e
