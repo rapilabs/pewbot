@@ -11,7 +11,14 @@ class PewbotCommand(object):
     help = ""
 
     def handle(self, message):
+        """
+        handle() should return either a list of messages to be sent
+        to the room, or None
+        """
         return []
 
     def help(self):
+        """
+        Returns a string telling people what's up
+        """
         return self.help
