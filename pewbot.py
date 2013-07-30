@@ -68,8 +68,9 @@ class Pewbot(object):
         if not self.first_run and body and message['user_id'] not in self.ignore_users:
             for c in self.commands:
                 try:
-                    for m in c.handle(body):
-                        if m:
+                    messages = c.handle(body)
+                    if messages:
+                        for m in messages:
                             room.speak(m)
                 except Exception as e:
                     print e
