@@ -44,7 +44,7 @@ class Pewbot(object):
             commands = []
             for f in os.listdir(command_dir):
                 if not f.startswith('_') and f.endswith('.py') and f not in 'base.py':
-                    module = import_module('pewbot.commands.%s' % (f[:3]))
+                    module = import_module('pewbot.commands.%s' % (f[:-3]))
                     commands.append(module.Command())
             return commands
         except OSError:
